@@ -25,6 +25,32 @@ void add_entry(map<string, vector<PhoneDirectory>> &directory) {
     directory[entry.name] .push_back(entry);
 }
 
+// Function to search for an entry in the directory
+void search_entry(map<string, vector<PhoneDirectory>> &directory) {
+    string name;
+    cout<<endl<<endl;
+    cout << "Enter the name: ";
+    cin >> name;
+
+    // Search for the entry in the directory
+    map<string, vector<PhoneDirectory>>::iterator it = directory.find(name);
+    if (it != directory.end()) {
+        cout<<endl;
+        cout << "Name: " << name << endl;
+        cout << "Phone number: ";
+        for(int i=0;i<(it->second).size();i++){
+          PhoneDirectory entry=(it->second)[i];
+          
+          cout  << entry.phone_number <<" ";
+        }
+        cout<<endl;
+
+    } else {
+        cout<<endl<<endl;
+        cout << "No entry found with name " << name << endl;
+    }
+}
+ 
 
 
 int main() {
