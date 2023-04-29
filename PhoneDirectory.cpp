@@ -74,7 +74,40 @@ void display_entries(map<string, vector<PhoneDirectory>> &directory) {
     }
 }
 
-
+// Function to delete an entryin the directory
+void delete_entry(map<string, vector<PhoneDirectory>> &directory) {
+    string name,number;
+    cout<<endl<<endl;
+    cout << "Enter the name: ";
+    cin >> name;
+    // Search for the entry in the directory
+    map<string, vector<PhoneDirectory>>::iterator it = directory.find(name);
+    if (it != directory.end()) {
+        
+        int n=(it->second).size();
+        if(n==1){
+            directory.erase(name);
+        }else{
+            cout<<endl;
+            cout<<"There is more than 1 number of "<<name<<" in the directory. "<<endl;
+            show(directory,name);
+            cout<<endl;
+            cout<<"Which one do you want to delete ?  Please tell according to number in order (1/2/3...).";
+            cin >> number;
+            int num=stoi(number);
+            for(int i=0;i<(it->second).size();i++){
+                
+                if(i+1==num){
+                   (it->second).erase((it->second).begin()+i);
+                    break;
+                }            
+            }
+        }       
+        cout<<"Number is deleted."<<endl;
+    } else {
+        cout << "No entry found with name " << name << endl;
+    }
+}
 
 // Function to update a person's phone number
 void update_entry(map<string, vector<PhoneDirectory>>&directory){
