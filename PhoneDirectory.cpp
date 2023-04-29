@@ -74,6 +74,25 @@ void display_entries(map<string, vector<PhoneDirectory>> &directory) {
     }
 }
 
+// Function to show multiple numbers of a person with name -> "name"
+
+void show(map<string, vector<PhoneDirectory>> &directory,string name){
+    map<string, vector<PhoneDirectory>>::iterator it = directory.find(name);
+    if(it!=directory.end()){
+        cout<<name<<" "<<endl;
+        for(int i=0;i<(it->second).size();i++){
+          PhoneDirectory entry=(it->second)[i];
+          
+          cout << entry.phone_number <<" ";
+        }
+        cout << endl;
+    }else{
+        cout<<endl;
+        cout << "No entry found with name " << name << endl;
+    }
+}
+
+
 // Function to delete an entryin the directory
 void delete_entry(map<string, vector<PhoneDirectory>> &directory) {
     string name,number;
