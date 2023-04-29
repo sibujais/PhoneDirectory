@@ -12,6 +12,20 @@ struct PhoneDirectory {
 };
 
 
+// Function to add a new entry to the directory
+void add_entry(map<string, vector<PhoneDirectory>> &directory) {
+    PhoneDirectory entry;
+    cout<<endl<<endl;
+    cout << "Enter the name: ";
+    cin >> entry.name;
+    cout << "Enter the phone number (Numeric digits only): ";
+    cin >> entry.phone_number;
+
+    // Add the new entry to the directory
+    directory[entry.name] .push_back(entry);
+}
+
+
 
 int main() {
     map<string, vector<PhoneDirectory>> directory;
