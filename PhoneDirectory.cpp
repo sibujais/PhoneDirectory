@@ -75,6 +75,38 @@ void display_entries(map<string, vector<PhoneDirectory>> &directory) {
 }
 
 
+
+// Function to update a person's phone number
+void update_entry(map<string, vector<PhoneDirectory>>&directory){
+    string name,number;
+    int num;
+    cout<<endl<<endl;
+    cout << "Enter the name: ";
+    cin >> name;
+    cout<<endl;
+    map<string, vector<PhoneDirectory>>::iterator it = directory.find(name);
+    if (it != directory.end()) {
+        show(directory,name);
+        cout<<endl;
+        cout<<"Which one do you want to update ?  Please tell according to number in order (1/2/3...).";
+        cin >> num;
+        cout<<"Enter the new Number: ";
+        cin>>number;
+        for(int i=0;i<(it->second).size();i++){
+          if(i+1==num){
+            (it->second)[i].phone_number=number;
+            cout<<"Number is Updated."<<endl;
+            break;
+          }
+        }
+        cout<<endl;
+
+    } else {
+        cout<<endl;
+        cout << "No entry found with name " << name << endl;
+    }
+}
+
 int main() {
     map<string, vector<PhoneDirectory>> directory;
 
