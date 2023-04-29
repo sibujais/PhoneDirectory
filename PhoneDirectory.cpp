@@ -52,6 +52,28 @@ void search_entry(map<string, vector<PhoneDirectory>> &directory) {
 }
  
 
+// Function to display all the entries in the directory
+void display_entries(map<string, vector<PhoneDirectory>> &directory) {
+  if(directory.size()==0){
+    cout<<endl;
+    cout<<"Till now,there is no entry in the Phonedirectory ."<<endl;
+    return ;
+  }
+    cout<<endl;
+    cout << "Phone Directory:" << endl;
+    for (map<string, vector<PhoneDirectory>>::iterator it = directory.begin(); it != directory.end(); it++) {
+        cout << "Name: " << it->first<< endl;
+        cout << "Phone number: ";
+       
+        for(int i=0;i<(it->second).size();i++){
+          PhoneDirectory entry=(it->second)[i];
+          
+          cout << entry.phone_number <<" ";
+        }
+        cout << endl;
+    }
+}
+
 
 int main() {
     map<string, vector<PhoneDirectory>> directory;
