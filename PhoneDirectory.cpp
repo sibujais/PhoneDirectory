@@ -5,6 +5,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Define a structure to store the phone directory data
+struct PhoneDirectory {
+    string name;
+    string phone_number;
+};
 
 
 
